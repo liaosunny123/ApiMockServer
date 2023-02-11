@@ -36,3 +36,23 @@ These are some optional parameter:
 -log=enable: Enable log output
 -middleware: Use middleware.(Please put in the dir middleware)
 ```
+# Config your yml
+```yml
+name: TestFilter
+proxy_mode: simple
+filter:
+  - http:
+      - host: test.com
+        endpoint: /api/status
+        method: post
+        type: replace
+        payload_type: json
+        module:
+          - pro: true 
+      - host: test.com
+        endpoint: /api/v2/status
+        method: post
+        type: mock
+        payload_type: json
+        module: "{\"pro\":\"true\"}"
+```
